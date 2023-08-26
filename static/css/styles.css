@@ -1,8 +1,4 @@
-.active {
-    background-color: #3498db !important;
-    color: white;
-}
-
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #ecf0f1;
@@ -12,12 +8,14 @@ h1 {
     color: #2c3e50;
 }
 
+/* Card Styles */
 .card {
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Button Styles */
 .btn {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
@@ -46,6 +44,7 @@ h1 {
     background-color: #2980b9;
 }
 
+/* Form Styles */
 .form-label {
     color: #2c3e50;
 }
@@ -60,17 +59,26 @@ h1 {
     border: 1px solid #ced4da;
 }
 
+.input-group-text {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px;
+    color: #343a40;
+}
+
+/* Loading Spinner Styles */
 #loading {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
+    z-index: 1000;
 }
 
 .spinner-border {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 
 .progress-text {
@@ -81,7 +89,7 @@ h1 {
     color: black;
 }
 
-
+/* Footer Styles */
 .footer {
     background-color: #f8f9fa;
     border-top: 1px solid #e7e7e7;
@@ -100,5 +108,21 @@ h1 {
     margin-left: auto;
 }
 
+/* Misc Styles */
+.active {
+    background-color: #3498db !important;
+    color: white;
+}
 
+.form-control {
+    border-radius: 0 5px 5px 0;
+}
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s;
+}

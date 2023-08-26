@@ -1,5 +1,7 @@
+// Función para enviar el formulario
 function submitForm(formId) {
     var form = document.getElementById(formId);
+    // Verificar la validez del formulario
     if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
@@ -12,13 +14,14 @@ function submitForm(formId) {
         xhr.upload.onprogress = function(event) {
             if (event.lengthComputable) {
                 var percentage = (event.loaded / event.total) * 100;
-                document.getElementById('progress').innerText = 'Cargando imagen: ' + percentage.toFixed(2) + '%';
+                document.getElementById('progress').innerHTML = '<i class="fas fa-upload"></i> Cargando imagen: ' + percentage.toFixed(2) + '%';
                 if (percentage === 100) {
-                    document.getElementById('progress').innerText = 'Procesando imagen...';
+                    document.getElementById('progress').innerHTML = '<i class="fas fa-cog fa-spin"></i> Procesando archivo...';
                 }
             }
         };
 
+        // Manejar el cambio de estado de la solicitud
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var blob;
@@ -49,9 +52,7 @@ function submitForm(formId) {
 }
 
 
-
-
-
+// Manejar el clic en el botón de redimensionamiento
 document.getElementById('resizeButton').addEventListener('click', function () {
     document.getElementById('resizeDiv').style.display = 'block';
     document.getElementById('convertDiv').style.display = 'none';
@@ -61,6 +62,7 @@ document.getElementById('resizeButton').addEventListener('click', function () {
     document.getElementById('removeBackgroundButton').classList.remove('active');
 });
 
+// Manejar el clic en el botón de conversión
 document.getElementById('convertButton').addEventListener('click', function () {
     document.getElementById('convertDiv').style.display = 'block';
     document.getElementById('resizeDiv').style.display = 'none';
@@ -70,6 +72,7 @@ document.getElementById('convertButton').addEventListener('click', function () {
     document.getElementById('removeBackgroundButton').classList.remove('active');
 });
 
+// Manejar el clic en el botón de eliminación de fondo
 document.getElementById('removeBackgroundButton').addEventListener('click', function () {
     document.getElementById('removeBackgroundDiv').style.display = 'block';
     document.getElementById('resizeDiv').style.display = 'none';
@@ -79,12 +82,13 @@ document.getElementById('removeBackgroundButton').addEventListener('click', func
     document.getElementById('convertButton').classList.remove('active');
 });
 
+// Manejar el paso del ratón sobre el logo de Teramont
 document.getElementById('teramont-logo').addEventListener('mouseover', function () {
     this.style.filter = 'grayscale(0%)';
 });
 
+// Manejar la salida del ratón del logo de Teramont
 document.getElementById('teramont-logo').addEventListener('mouseout', function () {
     this.style.filter = 'grayscale(100%)';
 });
-
 

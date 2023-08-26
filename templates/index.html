@@ -11,6 +11,7 @@
 </head>
 
 <body class="container mt-5">
+
     <h1 class="text-center">Redimensionador y Convertidor de Imágenes</h1>
 
     <div class="d-flex justify-content-center my-4">
@@ -24,24 +25,36 @@
         <form id="resizeForm" action="/resize" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('resizeForm', event)" class="mb-4 needs-validation" novalidate>
             <div class="mb-3">
                 <label for="file" class="form-label">Selecciona una imagen:</label>
-                <input type="file" class="form-control" id="file" name="file" required>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-file-image"></i></span>
+                    <input type="file" class="form-control" id="file" name="file" required>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="width" class="form-label">Ancho:</label>
-                <input type="text" class="form-control" id="width" name="width" required>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
+                    <input type="text" class="form-control" id="width" name="width" required>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="height" class="form-label">Alto:</label>
-                <input type="text" class="form-control" id="height" name="height" required>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-arrows-alt-v"></i></span>
+                    <input type="text" class="form-control" id="height" name="height" required>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="resizeFormat" class="form-label">Formato:</label>
-                <select class="form-select" id="resizeFormat" name="format" required>
-                    <option value="JPEG">JPEG</option>
-                    <option value="PNG">PNG</option>
-                    <option value="WEBP">WEBP</option>
-                </select>
-            </div>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-file-export"></i></span>
+                    <select class="form-select" id="resizeFormat" name="format" required>
+                        <option value="JPEG">JPEG</option>
+                        <option value="PNG">PNG</option>
+                        <option value="WEBP">WEBP</option>
+                    </select>
+                </div>
+            </div>            
             <button type="submit" class="btn btn-primary"><i class="fas fa-expand-arrows-alt"></i> Redimensionar</button>
         </form>
     </div>
@@ -51,17 +64,23 @@
         <form id="convertForm" action="/convert" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('convertForm', event)" class="mb-4 needs-validation" novalidate>
             <div class="mb-3">
                 <label for="convertFile" class="form-label">Selecciona una imagen:</label>
-                <input type="file" class="form-control" id="convertFile" name="file" required>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-file-image"></i></span>
+                    <input type="file" class="form-control" id="convertFile" name="file" required>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="convertFormat" class="form-label">Formato:</label>
-                <select class="form-select" id="convertFormat" name="format" required>
-                    <option value="JPEG">JPEG</option>
-                    <option value="PNG">PNG</option>
-                    <option value="WEBP">WEBP</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Convertir</button>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-file-export"></i></span>
+                    <select class="form-select" id="convertFormat" name="format" required>
+                        <option value="JPEG">JPEG</option>
+                        <option value="PNG">PNG</option>
+                        <option value="WEBP">WEBP</option>
+                    </select>
+                </div>
+            </div>            
+            <button type="submit" class="btn btn-primary"><i class="fas fa-exchange-alt"></i> Convertir</button>
         </form>
     </div>
     
@@ -70,9 +89,12 @@
         <form id="removeBackgroundForm" action="/remove_background" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('removeBackgroundForm')" class="mb-4 needs-validation" novalidate>
             <div class="mb-3">
                 <label for="removeBackgroundFile" class="form-label">Selecciona una imagen:</label>
-                <input type="file" class="form-control" id="removeBackgroundFile" name="file" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Remover Fondo</button>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-file-image"></i></span>
+                    <input type="file" class="form-control" id="removeBackgroundFile" name="file" required>
+                </div>
+            </div>            
+            <button type="submit" class="btn btn-primary"><i class="fas fa-cut"></i> Remover Fondo</button>
         </form>
     </div>
 
@@ -80,7 +102,9 @@
         <div class="spinner-border text-primary" role="status">
             <span class="sr-only"></span>
         </div>
-        <div id="progress" class="progress-text"></div>
+        <div id="progress" class="progress-text">
+            <i class="fas fa-upload"></i> Subiendo archivo...
+        </div>
     </div>
     
     <footer class="footer mt-auto py-3">
@@ -95,7 +119,7 @@
                 <div class="col-md-6 text-right">
                     <span>Powered by</span>
                     <a href="https://www.teramont.net/" target="_blank">
-                        <img src="https://www.teramont.net/assets/images/theme/logo/teramont-logo.png" alt="Teramont Logo" width="100">
+                        <img src="https://www.teramont.net/assets/images/theme/logo/teramont-logo.png" alt="Teramont Logo" width="100" id="teramont-logo">
                     </a>
                 </div>
             </div>
