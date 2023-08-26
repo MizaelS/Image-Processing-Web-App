@@ -23,9 +23,13 @@ function submitForm(formId) {
 document.getElementById('resizeButton').addEventListener('click', function () {
     document.getElementById('resizeDiv').style.display = 'block';
     document.getElementById('convertDiv').style.display = 'none';
+    document.getElementById('resizeButton').classList.add('active');
+    document.getElementById('convertButton').classList.remove('active');
 });
 
 document.getElementById('convertButton').addEventListener('click', function () {
     document.getElementById('convertDiv').style.display = 'block';
     document.getElementById('resizeDiv').style.display = 'none';
+    document.getElementById('convertButton').classList.add('active');
+    document.getElementById('resizeButton').classList.remove('active');
 });
