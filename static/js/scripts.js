@@ -8,7 +8,8 @@ function submitForm(formId) {
             var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = 'output.' + document.getElementById('format').value.toLowerCase();
+            var format = formId === 'resizeForm' ? 'resizeFormat' : 'convertFormat';
+            link.download = 'output.' + document.getElementById(format).value.toLowerCase();
             link.click();
             document.getElementById('loading').style.display = 'none';
         }
@@ -18,3 +19,13 @@ function submitForm(formId) {
     document.getElementById('loading').style.display = 'block';
     return false;
 }
+
+document.getElementById('resizeButton').addEventListener('click', function () {
+    document.getElementById('resizeDiv').style.display = 'block';
+    document.getElementById('convertDiv').style.display = 'none';
+});
+
+document.getElementById('convertButton').addEventListener('click', function () {
+    document.getElementById('convertDiv').style.display = 'block';
+    document.getElementById('resizeDiv').style.display = 'none';
+});

@@ -1,46 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redimensionador y Convertidor de Imágenes</title>
     <link rel="stylesheet" href="/static/css/styles.css">
-    <script src="/static/js/scripts.js"></script> 
 </head>
+
 <body>
     <h1>Redimensionador y Convertidor de Imágenes</h1>
 
-    <h2>Redimensionar Imagen</h2>
-    <form id="resizeForm" action="/resize" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('resizeForm')">
-        <label for="file">Selecciona una imagen:</label><br>
-        <input type="file" id="file" name="file"><br><br>
-        <label for="width">Ancho:</label><br>
-        <input type="text" id="width" name="width"><br><br>
-        <label for="height">Alto:</label><br>
-        <input type="text" id="height" name="height"><br><br>
-        <label for="format">Formato:</label><br>
-        <select id="format" name="format">
-            <option value="JPEG">JPEG</option>
-            <option value="PNG">PNG</option>
-            <option value="WEBP">WEBP</option>
-        </select><br><br>
-        <input type="submit" value="Redimensionar">
-    </form>
+    <button id="resizeButton">Redimensionar Imagen</button>
+    <button id="convertButton">Convertir Formato de Imagen</button>
 
-    <h2>Convertir Formato de Imagen</h2>
-    <form id="convertForm" action="/convert" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('convertForm')">
-        <label for="file">Selecciona una imagen:</label><br>
-        <input type="file" id="file" name="file"><br><br>
-        <label for="format">Formato:</label><br>
-        <select id="format" name="format">
-            <option value="JPEG">JPEG</option>
-            <option value="PNG">PNG</option>
-            <option value="WEBP">WEBP</option>
-        </select><br><br>
-        <input type="submit" value="Convertir">
-    </form>
+    <div id="resizeDiv" style="display:none;">
+        <h2>Redimensionar Imagen</h2>
+        <form id="resizeForm" action="/resize" method="POST" enctype="multipart/form-data"
+            onsubmit="return submitForm('resizeForm')">
+            <label for="file">Selecciona una imagen:</label><br>
+            <input type="file" id="file" name="file"><br><br>
+            <label for="width">Ancho:</label><br>
+            <input type="text" id="width" name="width"><br><br>
+            <label for="height">Alto:</label><br>
+            <input type="text" id="height" name="height"><br><br>
+            <label for="format">Formato:</label><br>
+            <select id="resizeFormat" name="format">
+                <option value="JPEG">JPEG</option>
+                <option value="PNG">PNG</option>
+                <option value="WEBP">WEBP</option>
+            </select><br><br>
+            <input type="submit" value="Redimensionar">
+        </form>
+    </div>
+
+    <div id="convertDiv" style="display:none;">
+        <h2>Convertir Formato de Imagen</h2>
+        <form id="convertForm" action="/convert" method="POST" enctype="multipart/form-data"
+            onsubmit="return submitForm('convertForm')">
+            <label for="file">Selecciona una imagen:</label><br>
+            <input type="file" id="file" name="file"><br><br>
+            <label for="format">Formato:</label><br>
+            <select id="convertFormat" name="format">
+                <option value="JPEG">JPEG</option>
+                <option value="PNG">PNG</option>
+                <option value="WEBP">WEBP</option>
+            </select><br><br>
+            <input type="submit" value="Convertir">
+        </form>
+    </div>
 
     <div id="loading"></div>
 
+    <script src="/static/js/scripts.js"></script>
+
 </body>
+
 </html>
