@@ -1,15 +1,15 @@
 .active {
-    background-color: #0d6efd !important;
+    background-color: #3498db !important;
     color: white;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #ecf0f1;
 }
 
 h1 {
-    color: #343a40;
+    color: #2c3e50;
 }
 
 .card {
@@ -20,33 +20,34 @@ h1 {
 
 .btn {
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-secondary {
-    background-color: #343a40;
+    background-color: #2c3e50;
     border: none;
 }
 
 .btn-secondary:hover {
-    background-color: #23272b;
+    background-color: #1a252f;
 }
 
 .btn-secondary.active {
-    background-color: #0d6efd;
+    background-color: #3498db;
     border: none;
 }
 
 .btn-primary {
-    background-color: #0d6efd;
+    background-color: #3498db;
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #2980b9;
 }
 
 .form-label {
-    color: #343a40;
+    color: #2c3e50;
 }
 
 .form-control {
@@ -79,4 +80,25 @@ h1 {
     transform: translate(-50%, -50%);
     color: black;
 }
+
+
+.footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e7e7e7;
+}
+
+.footer a {
+    margin: 0 5px;
+}
+
+.footer img {
+    vertical-align: middle;
+}
+
+.footer .text-right {
+    text-align: right;
+    margin-left: auto;
+}
+
+
 
