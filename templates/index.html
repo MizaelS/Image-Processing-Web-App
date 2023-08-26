@@ -19,23 +19,22 @@
 
     <div id="resizeDiv" class="card p-4 mb-4">
         <h2>Redimensionar Imagen</h2>
-        <form id="resizeForm" action="/resize" method="POST" enctype="multipart/form-data"
-            onsubmit="return submitForm('resizeForm')">
+        <form id="resizeForm" action="/resize" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('resizeForm')" class="mb-4 needs-validation" novalidate>
             <div class="mb-3">
                 <label for="file" class="form-label">Selecciona una imagen:</label>
-                <input type="file" class="form-control" id="file" name="file">
+                <input type="file" class="form-control" id="file" name="file" required>
             </div>
             <div class="mb-3">
                 <label for="width" class="form-label">Ancho:</label>
-                <input type="text" class="form-control" id="width" name="width">
+                <input type="text" class="form-control" id="width" name="width" required>
             </div>
             <div class="mb-3">
                 <label for="height" class="form-label">Alto:</label>
-                <input type="text" class="form-control" id="height" name="height">
+                <input type="text" class="form-control" id="height" name="height" required>
             </div>
             <div class="mb-3">
                 <label for="resizeFormat" class="form-label">Formato:</label>
-                <select class="form-select" id="resizeFormat" name="format">
+                <select class="form-select" id="resizeFormat" name="format" required>
                     <option value="JPEG">JPEG</option>
                     <option value="PNG">PNG</option>
                     <option value="WEBP">WEBP</option>
@@ -47,15 +46,14 @@
 
     <div id="convertDiv" class="card p-4 mb-4" style="display:none;">
         <h2>Convertir Formato de Imagen</h2>
-        <form id="convertForm" action="/convert" method="POST" enctype="multipart/form-data"
-            onsubmit="return submitForm('convertForm')">
+        <form id="convertForm" action="/convert" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('convertForm')" class="mb-4 needs-validation" novalidate>
             <div class="mb-3">
-                <label for="file" class="form-label">Selecciona una imagen:</label>
-                <input type="file" class="form-control" id="file" name="file">
+                <label for="convertFile" class="form-label">Selecciona una imagen:</label>
+                <input type="file" class="form-control" id="convertFile" name="file" required>
             </div>
             <div class="mb-3">
                 <label for="convertFormat" class="form-label">Formato:</label>
-                <select class="form-select" id="convertFormat" name="format">
+                <select class="form-select" id="convertFormat" name="format" required>
                     <option value="JPEG">JPEG</option>
                     <option value="PNG">PNG</option>
                     <option value="WEBP">WEBP</option>
@@ -63,7 +61,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Convertir</button>
         </form>
-    </div>
+    </div>    
 
     <div id="loading"></div>
 
