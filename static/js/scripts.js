@@ -7,15 +7,29 @@ function submitForm(formId) {
         var formData = new FormData(form);
         var xhr = new XMLHttpRequest();
         xhr.open('POST', form.action, true);
+
+        // Manejar el progreso de la carga
+        xhr.upload.onprogress = function(event) {
+            if (event.lengthComputable) {
+                var percentage = (event.loaded / event.total) * 100;
+                document.getElementById('progress').innerText = '' + percentage.toFixed(2) + '%';
+            }
+        };
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
                 var link = document.createElement('a');
                 link.href = window.URL.createObjectURL(blob);
+                var fileInput = formId === 'resizeForm' ? document.getElementById('file') : document.getElementById('convertFile');
+                var fileName = fileInput.files[0].name;
+                var fileExtension = fileName.split('.').pop();
                 var format = formId === 'resizeForm' ? 'resizeFormat' : 'convertFormat';
-                link.download = 'output.' + document.getElementById(format).value.toLowerCase();
+                var selectedFormat = document.getElementById(format).value.toLowerCase();
+                link.download = fileName.replace(fileExtension, selectedFormat);
                 link.click();
                 document.getElementById('loading').style.display = 'none';
+                document.getElementById('progress').innerText = '';
             }
         };
         xhr.responseType = 'arraybuffer';
