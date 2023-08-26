@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redimensionador y Convertidor de Imágenes</title>
+    <script>
+        function submitForm(formId) {
+            var form = document.getElementById(formId);
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'output.' + document.getElementById('format').value.toLowerCase();
+                    link.click();
+                    document.getElementById('loading').style.display = 'none';
+                }
+            };
+            xhr.responseType = 'arraybuffer';
+            xhr.send(formData);
+            document.getElementById('loading').style.display = 'block';
+            return false;
+        }
+    </script>    
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+    
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>    
+</head>
+<body>
+    <h1>Redimensionador y Convertidor de Imágenes</h1>
+
+    <h2>Redimensionar Imagen</h2>
+    <form id="resizeForm" action="/resize" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('resizeForm')">
+        <label for="file">Selecciona una imagen:</label><br>
+        <input type="file" id="file" name="file"><br><br>
+        <label for="width">Ancho:</label><br>
+        <input type="text" id="width" name="width"><br><br>
+        <label for="height">Alto:</label><br>
+        <input type="text" id="height" name="height"><br><br>
+        <label for="format">Formato:</label><br>
+        <select id="format" name="format">
+            <option value="JPEG">JPEG</option>
+            <option value="PNG">PNG</option>
+            <option value="WEBP">WEBP</option>
+        </select><br><br>
+        <input type="submit" value="Redimensionar">
+    </form>
+
+    <h2>Convertir Formato de Imagen</h2>
+    <form id="convertForm" action="/convert" method="POST" enctype="multipart/form-data" onsubmit="return submitForm('convertForm')">
+        <label for="file">Selecciona una imagen:</label><br>
+        <input type="file" id="file" name="file"><br><br>
+        <label for="format">Formato:</label><br>
+        <select id="format" name="format">
+            <option value="JPEG">JPEG</option>
+            <option value="PNG">PNG</option>
+            <option value="WEBP">WEBP</option>
+        </select><br><br>
+        <input type="submit" value="Convertir">
+    </form>
+
+    <div id="loading"></div>
+
+</body>
+</html>
