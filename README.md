@@ -22,7 +22,7 @@ Una aplicación web sencilla y fácil de usar para redimensionar, convertir y re
 
 ## Uso
 
-1. Abre la aplicación en un navegador web. Puedes ver una vista previa de la aplicación en [http://198.251.82.48:5000/](http://198.251.82.48:5000/).
+1. Abre la aplicación en un navegador web. Puedes ver una vista previa de la aplicación en [http://45.58.127.62:5000/](http://45.58.127.62:5000).
 2. Sube una imagen.
 3. Para redimensionar la imagen, especifica el ancho y alto deseados y selecciona el formato de imagen deseado.
 4. Para convertir la imagen, selecciona el formato de imagen deseado.
